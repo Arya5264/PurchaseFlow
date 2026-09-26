@@ -6,11 +6,16 @@ const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB & launch server
 const startServer = async () => {
-  await connectDB();
+  try {
+    await connectDB();
 
-  app.listen(PORT, () => {
-    console.log(`[PurchaseFlow API Server running on port ${PORT}] in ${process.env.NODE_ENV || 'development'} mode.`);
-  });
+    app.listen(PORT, () => {
+      console.log(`[PurchaseFlow API Server running on port ${PORT}] in ${process.env.NODE_ENV || 'development'} mode.`);
+    });
+  } catch (error) {
+    console.error(`[Fatal Server Startup Error]: ${error.message}`);
+    process.exit(1);
+  }
 };
 
 startServer();

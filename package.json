@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "description": "PURCHASEFLOW - Purchase Requisition and Procurement Management System",
+  "workspaces": [
+    "server",
+    "client"
+  ],
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "npm run dev --prefix server",
     "client": "npm run dev --prefix client",
     "seed": "npm run seed --prefix server",
     "test": "npm test --prefix server",
+    "test:all": "npm run test:all --prefix server",
     "build": "npm run build --prefix client",
     "install:all": "npm install && npm install --prefix server && npm install --prefix client"
   },
